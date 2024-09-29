@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ian Conradie - Portfolio">
+    <title>Ian Conradie | Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        nav {
+            margin: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+        .intro {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .skills, .projects, .contact {
+            margin-bottom: 50px;
+        }
+        .skills ul, .projects ul {
+            list-style: none;
+            padding: 0;
+        }
+        .skills li, .projects li {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        .contact form input, .contact form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .intro img {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Ian Conradie</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Introduction Section -->
+    <section id="about">
+        <div class="intro">
+            <img src="images/formalprofilepic2.jpg" alt="Profile Picture of Ian Conradie">
+            <h2>About Me</h2>
+            <p>Hello! I’m Ian Conradie. I am a highly adaptable and passionate final-year Games Development student with a strong academic record and a deep love for learning. Specializing in 3D and VR game design and development, I have honed my skills in game modeling, design, and interactive experiences. My goal is to leverage my creativity, technical expertise, and drive for innovation to contribute to cutting-edge game projects. With a clear path towards becoming a Senior Game Developer, I am eager to further develop my skills in 3D and VR game development and take on new challenges in the industry. Welcome to my portfolio!</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+            <ul>
+                <li>HTML, CSS, JavaScript, PHP</li>
+                <li>C#, Java, Python</li>
+                <li>.NET Framework, .NET Core, SQL</li>
+                <li>Unity, Blender</li>
+                <li>Flutter, Dart</li>
+                <li>UI/UX Design with Figma</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+            <ul>
+                <li><strong>Project 1:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
+                <li><strong>Project 2:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
+                <li><strong>Project 3:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact">
+            <form id="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <input type="submit" value="Send Message">
+            </form>
+            <p id="form-status"></p>
+        </div>
+     </section>
+     
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Ian Conradie. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            
+            const formData = new FormData(this); // Gather form data
+
+            fetch('send_email.php', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    message: formData.get('message')
+                }),
+                headers: {
+                    'Content-Type': 'application/json' // Set content type as JSON
+                }
+            })
+            .then(response => response.text()) // Handle response from PHP
+            .then(data => {
+                document.getElementById('form-status').innerText = data;  // Display the response in the "form-status" element
+            })
+            .catch(error => {
+                document.getElementById('form-status').innerText = "There was an error submitting the form."; 
+            });
+        });
+    </script>
+    
+</body>
+</html>
