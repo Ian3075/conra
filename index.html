@@ -283,7 +283,7 @@
             <ul>
                 <li onclick="openModal('modal1')"> Fruit Catcher</li>
                 <li onclick="openModal('modal2')"> Car Shooter</li>
-                <li><strong>Project 3:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
+                <li onclick="openModal('modal3')"> Adventure Time</li>
             </ul>
         </div>
     </section>
@@ -306,15 +306,26 @@
     <!-- Modal 2 --> 
     <div id="modal2" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
             <h3>Car Shooter</h3>
-            <p>
-                The Car Shooting Game is a thrilling 2D top-down arcade racer made in Unity that combines fast-paced racing with intense vehicular combat. Players control customizable cars, racing against AI opponents while utilizing weapons like missiles and lasers to eliminate rivals. The game features various vibrant tracks, retro pixel-art graphics, and engaging gameplay mechanics, including drifting and braking, to enhance the racing experience.</p>
+            <p>The Car Shooting Game is a thrilling 2D top-down arcade racer made in Unity that combines fast-paced racing with intense vehicular combat. Players control customizable cars, racing against AI opponents while utilizing weapons like missiles and lasers to eliminate rivals. The game features various vibrant tracks, retro pixel-art graphics, and engaging gameplay mechanics, including drifting and braking, to enhance the racing experience.</p>
             <div class="video-container">
                 <video controls>
                     <source src="carShooterGame.mp4" type="video/mp4">
                 </video>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 --> 
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h3>Adventure Time</h3>
+            <p>Adventure Time is a 2D platformer game made in Unity. In this game, the player controls a character that embarks on an epic adventure through multiple levels. The objective is to guide the character through various obstacles, defeat enemies, collect valuable items, and reach the end goal to complete each level.</p>
+            <img src="adventureTimeMenu.png" alt="Screenshot of Adventure Time Menu">
+            <img src="adventureTimeLevel1.png" alt="Screenshot of Adventure Time Level 1">
+            <img src="adventureTimeLevel2.png" alt="Screenshot of Adventure Time Level 2">
         </div>
     </div>
 
