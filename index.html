@@ -15,30 +15,35 @@
             background: linear-gradient(to right, #2c3e50, #3498db);
             color: #ecf0f1;
         }
+
         /* App Bar (Header) */
         header {
             background-color: rgba(0, 0, 0, 0.8);
             color: #ecf0f1;
             padding: 10px;
         }
-        /* Flexbox for name and LinkedIn link */
+
+        /* Flexbox for name and LinkedIn*/
         .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding-bottom: 10px;
         }
+
         .top-bar h1 {
             margin: 0;
             font-size: 3rem;
             font-family: 'Orbitron', sans-serif;
             text-shadow: 2px 2px #2c3e50;
         }
+
         /* Navigation Tabs */
         nav {
             text-align: center;
             margin-top: 10px;
         }
+
         nav a {
             color: #ecf0f1;
             margin: 0 15px;
@@ -46,16 +51,19 @@
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
+
         nav a:hover {
             color: #3498db;
             text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.6);
         }
+
         .linkedin a {
             color: #ecf0f1;
             text-decoration: none;
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
+
         .linkedin a:hover {
             color: #3498db;
             text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.6);
@@ -67,6 +75,7 @@
             text-align: center;
             margin: 20px 0;
         }
+
         .intro {
             background-color: rgba(44, 62, 80, 0.9);
             padding: 20px;
@@ -74,9 +83,12 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             margin-bottom: 30px;
         }
+
+        /* Skills Section */
         .skills, .projects {
             margin-bottom: 50px;
         }
+
         .skills ul, .projects ul {
             list-style: none;
             padding: 0;
@@ -84,23 +96,41 @@
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 10px;
         }
+
         .skills li, .projects li {
             background: rgba(52, 152, 219, 0.7);
             padding: 10px;
             border-radius: 5px;
             transition: transform 0.3s;
         }
+
         .skills li:hover, .projects li:hover {
             transform: scale(1.05);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
-        .contact form input, .contact form textarea {
-            width: 100%;
+
+        /* Contact Section */
+        .contact {
+            max-width: 600px; 
+            margin: 0 auto;   
+            padding: 20px;    
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column; 
+        }
+
+        .contact form input,
+        .contact form textarea {
+            width: 100%;        
             padding: 10px;
             margin: 10px 0;
             border-radius: 5px;
             border: 1px solid #ccc;
+            box-sizing: border-box; 
         }
+
         footer {
             background-color: rgba(0, 0, 0, 0.8);
             color: #ecf0f1;
@@ -109,6 +139,7 @@
             position: relative;
             z-index: 10;
         }
+
         .intro img {
             border-radius: 50%;
             width: 250px;
@@ -149,6 +180,7 @@
             }
         }
 
+        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -161,6 +193,7 @@
             background-color: rgba(0, 0, 0, 0.8);
             padding-top: 60px;
         }
+
         .modal-content {
             background-color: #fefefe;
             margin: 5% auto;
@@ -170,9 +203,11 @@
             max-width: 600px;
             color: #2c3e50;
         }
+
         .modal-content h3 {
             margin-top: 0;
         }
+
         .close {
             color: #aaa;
             float: right;
@@ -180,14 +215,17 @@
             font-weight: bold;
             cursor: pointer;
         }
+
         .close:hover, .close:focus {
             color: #000;
             text-decoration: none;
             cursor: pointer;
         }
+
         .video-container {
             margin-top: 20px;
         }
+
         .video-container video, .video-container iframe {
             width: 100%;
             height: auto;
@@ -244,7 +282,7 @@
         <div class="projects">
             <ul>
                 <li onclick="openModal('modal1')"> Fruit Catcher</li>
-                <li><strong>Project 2:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
+                <li onclick="openModal('modal2')"> Car Shooter</li>
                 <li><strong>Project 3:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
             </ul>
         </div>
@@ -260,6 +298,21 @@
             <div class="video-container">
                 <video controls>
                     <source src="fruitCatcherGame.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 --> 
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h3>Car Shooter</h3>
+            <p>
+                The Car Shooting Game is a thrilling 2D top-down arcade racer made in Unity that combines fast-paced racing with intense vehicular combat. Players control customizable cars, racing against AI opponents while utilizing weapons like missiles and lasers to eliminate rivals. The game features various vibrant tracks, retro pixel-art graphics, and engaging gameplay mechanics, including drifting and braking, to enhance the racing experience.</p>
+            <div class="video-container">
+                <video controls>
+                    <source src="carShooterGame.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
