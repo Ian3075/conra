@@ -148,6 +148,50 @@
                 margin-bottom: 30px;
             }
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            color: #2c3e50;
+        }
+        .modal-content h3 {
+            margin-top: 0;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover, .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .video-container {
+            margin-top: 20px;
+        }
+        .video-container video, .video-container iframe {
+            width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -199,12 +243,27 @@
         <h2>Projects</h2>
         <div class="projects">
             <ul>
-                <li><strong>Project 1:</strong> Fruit Catcher - This Unity project is a 3D arcade-style game where the player controls a character to catch falling fruits and avoid bombs. The player moves using the mouse, and their size can be adjusted via the mouse scroll wheel. Each fruit caught increases the score by 1 point, while each bomb hit reduces the player's lives by 1. The player starts with 3 lives, visually represented by hearts. When all lives are lost, a game over screen appears, displaying the player's final score and offering the option to restart the game. The project emphasizes player movement, object interaction, and a simple scoring and lives system.</li>
+                <li onclick="openModal('modal1')"> Fruit Catcher</li>
                 <li><strong>Project 2:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
                 <li><strong>Project 3:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
             </ul>
         </div>
     </section>
+
+    <!-- Modals for Project Information -->
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h3>Fruit Catcher</h3>
+            <p>This Unity project is a 3D arcade-style game where the player controls a character to catch falling fruits and avoid bombs. The player moves using the mouse, and their size can be adjusted via the mouse scroll wheel. Each fruit caught increases the score by 1 point, while each bomb hit reduces the player's lives by 1. The player starts with 3 lives, visually represented by hearts. When all lives are lost, a game over screen appears, displaying the player's final score and offering the option to restart the game. The project emphasizes player movement, object interaction, and a simple scoring and lives system.</p>
+            <div class="video-container">
+                <video controls>
+                    <source src="fruitCatcherGame.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact">
@@ -224,16 +283,29 @@
         <p>&copy; 2024 Ian Conradie. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for form submission -->
-    <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            document.getElementById('form-status').textContent = 'Thank you for your message. I will get back to you soon.';
-            setTimeout(function() {
-                document.getElementById('form-status').textContent = '';
-                document.getElementById('contact-form').reset();
-            }, 5000);
-        });
-    </script>
+   <!-- JavaScript for Modal and Form Submission -->
+<script>
+    // Function to open a modal
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.display = "block"; // Show the modal
+    }
+
+    // Function to close a modal
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.display = "none"; // Hide the modal
+    }
+
+    // JavaScript for form submission
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        document.getElementById('form-status').textContent = 'Thank you for your message. I will get back to you soon.';
+        setTimeout(function() {
+            document.getElementById('form-status').textContent = '';
+            document.getElementById('contact-form').reset();
+        }, 5000);
+    });
+</script>    
 </body>
 </html>
