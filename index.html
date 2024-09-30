@@ -15,22 +15,29 @@
             background: linear-gradient(to right, #2c3e50, #3498db);
             color: #ecf0f1;
         }
+        /* App Bar (Header) */
         header {
             background-color: rgba(0, 0, 0, 0.8);
             color: #ecf0f1;
-            padding: 20px 0;
-            text-align: center;
-            position: relative;
-            z-index: 10;
+            padding: 10px;
         }
-        header h1 {
+        /* Flexbox for name and LinkedIn link */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+        .top-bar h1 {
             margin: 0;
             font-size: 3rem;
             font-family: 'Orbitron', sans-serif;
             text-shadow: 2px 2px #2c3e50;
         }
+        /* Navigation Tabs */
         nav {
-            margin: 10px 0;
+            text-align: center;
+            margin-top: 10px;
         }
         nav a {
             color: #ecf0f1;
@@ -43,6 +50,18 @@
             color: #3498db;
             text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.6);
         }
+        .linkedin a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        .linkedin a:hover {
+            color: #3498db;
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Main content sections */
         section {
             padding: 50px;
             text-align: center;
@@ -101,40 +120,48 @@
         }
 
         /* Responsive styles */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem; 
-    }
-    nav a {
-        font-size: 1rem; 
-    }
-    .intro img {
-        width: 150px; 
-        height: 150px; 
-    }
-}
+        @media (max-width: 768px) {
+            .top-bar h1 {
+                font-size: 2rem;
+            }
+            nav a {
+                font-size: 1rem;
+            }
+            .intro img {
+                width: 150px;
+                height: 150px;
+            }
+        }
 
-@media (max-width: 480px) {
-    section {
-        padding: 10px; 
-    }
-    header h1 {
-        font-size: 1.5rem; 
-    }
-    nav a {
-        font-size: 0.9rem;
-        margin: 0 10px; 
-    }
-    .skills, .projects, .contact {
-        margin-bottom: 30px; 
-    }
-}
+        @media (max-width: 480px) {
+            section {
+                padding: 10px;
+            }
+            .top-bar h1 {
+                font-size: 1.5rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+                margin: 0 10px;
+            }
+            .skills, .projects, .contact {
+                margin-bottom: 30px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <h1>Ian Conradie</h1>
+        <!-- Top Bar with name and LinkedIn -->
+        <div class="top-bar">
+            <h1>Ian Conradie</h1>
+            <div class="linkedin">
+                <a href="https://www.linkedin.com/in/ian-conradie-823059249?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B8yJlGxw3QJWWBcMvG5DD9Q%3D%3D" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+
+        <!-- Navigation Bar (tabs) below -->
         <nav>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -172,7 +199,7 @@
         <h2>Projects</h2>
         <div class="projects">
             <ul>
-                <li><strong>Project 1:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
+                <li><strong>Project 1:</strong> Fruit Catcher - This Unity project is a 3D arcade-style game where the player controls a character to catch falling fruits and avoid bombs. The player moves using the mouse, and their size can be adjusted via the mouse scroll wheel. Each fruit caught increases the score by 1 point, while each bomb hit reduces the player's lives by 1. The player starts with 3 lives, visually represented by hearts. When all lives are lost, a game over screen appears, displaying the player's final score and offering the option to restart the game. The project emphasizes player movement, object interaction, and a simple scoring and lives system.</li>
                 <li><strong>Project 2:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
                 <li><strong>Project 3:</strong> [Project Name] - A short description of your project and the technologies you used.</li>
             </ul>
@@ -187,9 +214,8 @@
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
                 <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                <input type="submit" value="Send Message">
+                <input type="submit" value="Send">
             </form>
-            <p id="form-status"></p>
         </div>
     </section>
 
@@ -198,24 +224,15 @@
         <p>&copy; 2024 Ian Conradie. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript for form submission -->
     <script>
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            
-            const formData = new FormData(this);
-
-            fetch('send_email.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('form-status').innerText = data;
-                this.reset(); 
-            })
-            .catch(error => {
-                document.getElementById('form-status').innerText = 'Error sending message. Please try again.';
-            });
+            document.getElementById('form-status').textContent = 'Thank you for your message. I will get back to you soon.';
+            setTimeout(function() {
+                document.getElementById('form-status').textContent = '';
+                document.getElementById('contact-form').reset();
+            }, 5000);
         });
     </script>
 </body>
