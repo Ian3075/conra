@@ -201,6 +201,8 @@
             border: 1px solid #888;
             width: 80%;
             max-width: 600px;
+            max-height: 80vh; /* Set a maximum height for modal content */
+            overflow-y: auto;  /* Enable vertical scrolling if content overflows */
             color: #2c3e50;
         }
 
@@ -222,14 +224,25 @@
             cursor: pointer;
         }
 
+        /* Video and iframe responsiveness */
         .video-container {
             margin-top: 20px;
         }
 
         .video-container video, .video-container iframe {
             width: 100%;
+            max-width: 100%;  /* Ensures video doesn't overflow */
             height: auto;
         }
+
+        /* Ensures images are responsive */
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
     </style>
 </head>
 <body>
@@ -424,7 +437,7 @@
     <!-- Modal 11 -->
     <div id="modal10" class="modal"></div>
         <div class="modal-content">
-            <span class="close" onclick="closeModal('modal10')">&times;</span>
+            <span class="close" onclick="closeModal('modal11')">&times;</span>
             <h3>Adventure Collectable</h3>
             <p></p>
             <div class="video-container"></div>
