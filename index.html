@@ -435,7 +435,8 @@
     </div>
 
     <!-- Modal 11 -->
-    <div id="modal10" class="modal"></div>
+    <!--
+    <div id="modal11" class="modal"></div>
         <div class="modal-content">
             <span class="close" onclick="closeModal('modal11')">&times;</span>
             <h3>Adventure Collectable</h3>
@@ -447,6 +448,7 @@
             </div>
         </div>
     </div> 
+    -->
 
     <!-- Contact Section -->
     <section id="contact">
@@ -468,17 +470,25 @@
 
    <!-- JavaScript for Modal and Form Submission -->
 <script>
-    // Function to open a modal
     function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.style.display = "block"; // Show the modal
-    }
+            var modal = document.getElementById(modalId);
+            modal.style.display = "block";
+        }
 
-    // Function to close a modal
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.style.display = "none"; // Hide the modal
-    }
+        function closeModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            var modals = document.getElementsByClassName('modal');
+            for (var i = 0; i < modals.length; i++) {
+                if (event.target === modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
 
     // JavaScript for form submission
     document.getElementById('contact-form').addEventListener('submit', function(event) {
